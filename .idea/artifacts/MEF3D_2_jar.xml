@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MEF3D_2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MEF3D_2_jar</output-path>
+    <root id="archive" name="MEF3D_2.jar">
+      <element id="module-output" name="MEF3D_2" />
+    </root>
+  </artifact>
+</component>
