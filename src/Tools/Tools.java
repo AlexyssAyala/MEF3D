@@ -17,17 +17,21 @@ public class Tools {
     //Metodo estatico que lee los datos del programa y los almacena en los objetos necesarios dependiendo del caso
     public static void obtenerDatos(BufferedReader file, Lines nlines, int n, Modes mode, Item[] itemList) throws IOException {
         String line;
-        line = file.readLine(); line = file.readLine();
+        line = file.readLine();
+        line = file.readLine();
         String[] values = null;
-        if(nlines == DOUBLELINE) line = file.readLine();
+        if(nlines == DOUBLELINE)
+            line = file.readLine();
 
         for (int i = 0; i < n; i++) {
             switch (mode){
                 case INT_FLOAT:
+
                     int e0; float r0;
                     line = file.readLine();
                     values = line.split("\\s+");
-                    e0 = Integer.parseInt(values[0].trim()); r0 = Float.parseFloat(values[1].trim());
+                    e0 = Integer.parseInt(values[0].trim());
+                    r0 = Float.parseFloat(values[1].trim());
                     System.out.println(e0+"\t"+r0);
                     //ERROR DE PARAMETROS ENVIADOS
 
@@ -35,6 +39,7 @@ public class Tools {
                     itemList[i].setValues(0,0,0,0,e0,0,0,0,r0 );
                     break;
                 case INT_FLOAT_FLOAT_FLOAT:
+
                     int e; float r,rr,rrr;
                     line = file.readLine();
                     values = line.split("\\s+");
@@ -48,6 +53,7 @@ public class Tools {
                     itemList[i].setValues(e,r,rr,rrr,0,0,0,0,0);
                     break;
                 case INT_INT_INT_INT_INT:
+
                     int e1,e2,e3,e4,e5;
                     line = file.readLine();
                     values = line.split("\\s+");
@@ -93,8 +99,12 @@ public class Tools {
 
         //Se crea la conexion con el archivo. Cuando se termine de ejecutar la sentencia try catch la conexin
         //se cierra. El try catch es requerido para poder usar los objetos FileReader y BufferedReader
-        try(FileReader fr = new FileReader(inputfilename); BufferedReader file = new BufferedReader(fr)) {
-
+        System.out.println("antes del try");
+        System.out.println(inputfilename);
+        try(FileReader fr = new FileReader(inputfilename);
+            BufferedReader file = new BufferedReader(fr)) {
+            System.out.println(fr);
+            System.out.println("estoy en la primera linea de try");
             line = file.readLine();
             values = line.split("\\s+");
             k = Float.parseFloat(values[0].trim()); Q = Float.parseFloat(values[1].trim());
