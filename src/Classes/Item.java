@@ -10,10 +10,63 @@ public abstract class Item {
     protected int node2;
     protected int node3;
     protected int node4;
+    protected int node5;
+    protected int node6;
+    protected int node7;
+    protected int node8;
+    protected int node9;
+    protected int node10;
     protected float value;
 
 
 
+    public int getNode5() {
+        return node5;
+    }
+
+    public void setNode5(int node5) {
+        this.node5 = node5;
+    }
+
+    public int getNode6() {
+        return node6;
+    }
+
+    public void setNode6(int node6) {
+        this.node6 = node6;
+    }
+
+    public int getNode7() {
+        return node7;
+    }
+
+    public void setNode7(int node7) {
+        this.node7 = node7;
+    }
+
+    public int getNode8() {
+        return node8;
+    }
+
+    public void setNode8(int node8) {
+        this.node8 = node8;
+    }
+
+    public int getNode9() {
+        return node9;
+    }
+
+    public void setNode9(int node9) {
+        this.node9 = node9;
+    }
+
+    public int getNode10() {
+        return node10;
+    }
+
+    public void setNode10(int node10) {
+        this.node10 = node10;
+    }
 
     public void setNode4(int node4) {
         this.node4 = node4;
@@ -94,6 +147,7 @@ public abstract class Item {
     public int getNode4() {
         return node4;
     }
+
     //agregado
 
     //

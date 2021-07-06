@@ -12,6 +12,9 @@ public class Matrix extends ArrayList<Vector> {
         }
     }
 
+
+
+
     //Funcion que imprime la matriz
     public void Show(){
         for (int i = 0; i < this.size(); i++) {

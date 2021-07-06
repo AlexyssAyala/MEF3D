@@ -17,6 +17,197 @@ public class Sel {
             System.out.println("**********************************");
         }
     }
+    //declaraciones de c1
+
+    public static float CreateC1 (int ind, Mesh m){
+            Element el = m.getElement(ind);
+            el= m.getElement(ind);
+            Node n1 = m.getNode(el.getNode1()-1);
+            Node n2 = m.getNode(el.getNode2()-1);
+
+
+
+            return (float) ((1f)/Math.pow((n2.getX()-n1.getX()),2));
+
+
+    }
+    public static float CreateC2 (int ind, Mesh m){
+        Element el = new Element();
+        el= m.getElement(ind);
+        Node n1 = m.getNode(el.getNode1()-1);
+        Node n2 = m.getNode(el.getNode2()-1);
+        Node n8 = m.getNode(el.getNode8()-1);
+
+
+        return (float) ((1f)/(n2.getX() - n1.getX()))*((4*n1.getX())+(4*n2.getX())-(8*n8.getX()));
+
+
+    }
+
+    public static void calculateLocalμ(float c1, float c2, Matrix μ){
+
+        float A,B,C,D,E,F,G,H,I,J,K;
+
+
+        A= (float) ((float) ((float) ((float) (-(1f)/(192*Math.pow(c2,2)))*Math.pow(4*c1-c2,4))-((1f)/(24*c2))*Math.pow(4*c1-c2,3))-
+                ((1f)/(3840*Math.pow(c2,3)))*Math.pow(4*c1-c2,5)+((1f)/(3840*Math.pow(c2,3)))*Math.pow(4*c1-3*c2,5));
+
+        B= (float) ((float) ((float) ((float) (-(1f)/(192*Math.pow(c2,2)))*Math.pow(4*c1+c2,4))+((1f)/(24*c2))*Math.pow(4*c1+c2,3))+
+                ((1f)/(3840*Math.pow(c2,3)))*Math.pow(4*c1+c2,5)-((1f)/(3840*Math.pow(c2,3)))*Math.pow(4*c1-3*c2,5));
+
+        C= (float) ((4/15)*Math.pow(c2,2));
+
+        D= (float) ((float) ((float) ((float) ((float) ((float) ((float) ((float) ((float) ((1f)/(192*Math.pow(c2,2)))*Math.pow(4*c2-c1,4))-((1f)/(3840*Math.pow(c2,3)))*Math.pow(4*c2-c1,5))+
+                                                        ((1f)/(7680*Math.pow(c2,3)))*Math.pow(4*c2+8*c1,5)-((7f)/(7680*Math.pow(c2,3)))*Math.pow(4*c2-8*c1,5))+ ((1f)/(768*Math.pow(c2,3)))*Math.pow(-8*c1,5))-
+                                                (c1)/(96*Math.pow(c2,3)))*Math.pow((4*c2)-8*c1,4))+((2*c1-1)/192*Math.pow(c2,3)))*Math.pow(-8*c1,4));
+
+        E = (float) ((float) ((8/3)*Math.pow(c1,2))+ (1/30)*Math.pow(c2,2));
+
+        F= (float) (((2/3)*(c1*c2)) - (1/30)*Math.pow(c2,2));
+
+        G = (float) ((-16/3)*(Math.pow(c1,2)) - (4/3)*(c1*c2) - (2/15)*Math.pow(c2,2)) ;
+
+        H = (float) (((2/3)*(c1*c2)) + (1/30)*Math.pow(c2,2));
+
+        I =  (float) ((float) (-(16/3)*Math.pow(c1,2))-(2/3)*Math.pow(c2,2));
+
+        J = (float) (- (2/15)*Math.pow(c2,2)) ;
+
+        K =  -(4/3)*(c1*c2);
+
+        μ.get(0).set(0, A);
+        μ.get(0).set(1, E);
+        μ.get(0).set(2, 0f);
+        μ.get(0).set(3, 0f);
+        μ.get(0).set(4, -F);
+        μ.get(0).set(5, 0f);
+        μ.get(0).set(6, -F);
+        μ.get(0).set(7, G);
+        μ.get(0).set(8, F);
+        μ.get(0).set(9, F);
+
+        μ.get(1).set(0, E);
+        μ.get(1).set(1, B);
+        μ.get(1).set(2, 0f);
+        μ.get(1).set(3, 0f);
+        μ.get(1).set(4, -H);
+        μ.get(1).set(5, 0f);
+        μ.get(1).set(6, -H);
+        μ.get(1).set(7, I);
+        μ.get(1).set(8, H);
+        μ.get(1).set(9, H);
+
+        μ.get(2).set(0, 0f);
+        μ.get(2).set(1, 0f);
+        μ.get(2).set(2, 0f);
+        μ.get(2).set(3, 0f);
+        μ.get(2).set(4, 0f);
+        μ.get(2).set(5, 0f);
+        μ.get(2).set(6, 0f);
+        μ.get(2).set(7, 0f);
+        μ.get(2).set(8, 0f);
+        μ.get(2).set(9, 0f);
+
+        μ.get(3).set(0, 0f);
+        μ.get(3).set(1, 0f);
+        μ.get(3).set(2, 0f);
+        μ.get(3).set(3, 0f);
+        μ.get(3).set(4, 0f);
+        μ.get(3).set(5, 0f);
+        μ.get(3).set(6, 0f);
+        μ.get(3).set(7, 0f);
+        μ.get(3).set(8, 0f);
+        μ.get(3).set(9, 0f);
+
+        μ.get(4).set(0, -F);
+        μ.get(4).set(1, -H);
+        μ.get(4).set(2, 0f);
+        μ.get(4).set(3, 0f);
+        μ.get(4).set(4, C);
+        μ.get(4).set(5, 0f);
+        μ.get(4).set(6, J);
+        μ.get(4).set(7, -K);
+        μ.get(4).set(8, -C);
+        μ.get(4).set(9, -J);
+
+        μ.get(5).set(0, 0f);
+        μ.get(5).set(1, 0f);
+        μ.get(5).set(2, 0f);
+        μ.get(5).set(3, 0f);
+        μ.get(5).set(4, 0f);
+        μ.get(5).set(5, 0f);
+        μ.get(5).set(6, 0f);
+        μ.get(5).set(7, 0f);
+        μ.get(5).set(8, 0f);
+        μ.get(5).set(9, 0f);
+
+        μ.get(6).set(0, -F);
+        μ.get(6).set(1, -H);
+        μ.get(6).set(2, 0f);
+        μ.get(6).set(3, 0f);
+        μ.get(6).set(4, J);
+        μ.get(6).set(5, 0f);
+        μ.get(6).set(6, C);
+        μ.get(6).set(7, -K);
+        μ.get(6).set(8, -J);
+        μ.get(6).set(9, -C);
+
+        μ.get(7).set(0, G);
+        μ.get(7).set(1, I);
+        μ.get(7).set(2, 0f);
+        μ.get(7).set(3, 0f);
+        μ.get(7).set(4, -K);
+        μ.get(7).set(5, 0f);
+        μ.get(7).set(6, -K);
+        μ.get(7).set(7, D);
+        μ.get(7).set(8, K);
+        μ.get(7).set(9, K);
+
+        μ.get(8).set(0, F);
+        μ.get(8).set(1, H);
+        μ.get(8).set(2, 0f);
+        μ.get(8).set(3, 0f);
+        μ.get(8).set(4, -C);
+        μ.get(8).set(5, 0f);
+        μ.get(8).set(6, -J);
+        μ.get(8).set(7, K);
+        μ.get(8).set(8, C);
+        μ.get(8).set(9, J);
+
+        μ.get(9).set(0, F);
+        μ.get(9).set(1, H);
+        μ.get(9).set(2, 0f);
+        μ.get(9).set(3, 0f);
+        μ.get(9).set(4, -J);
+        μ.get(9).set(5, 0f);
+        μ.get(9).set(6, -C);
+        μ.get(9).set(7, K);
+        μ.get(9).set(8, J);
+        μ.get(9).set(9, C);
+
+
+
+    }
+
+    //MATRIZ TAO
+    private static void calculatelocalτ(Matrix τ){
+
+        τ.get(0).set(0, 59f);
+        τ.get(1).set(0, -1f);
+        τ.get(2).set(0, -1f);
+        τ.get(3).set(0, -1f);
+        τ.get(4).set(0, 4f);
+        τ.get(5).set(0, 4f);
+        τ.get(6).set(0, 4f);
+        τ.get(7).set(0, 4f);
+        τ.get(8).set(0, 4f);
+        τ.get(9).set(0, 4f);
+
+
+    }
+
+
+
 
     //Muestra ls bs
     public static void showbs(ArrayList<Vector> bs){
@@ -152,22 +343,23 @@ public class Sel {
     //Metodo que cera una matriz local K y lo alamcena en m
     private static Matrix createLocalK(int element,Mesh m){
         // K=(k*Ve/D^2)Bd*At*A*B := k_4*4
-        float D,Ve,k = m.getParameter(Parameters.THERMAL_CONDUCTIVITY.ordinal());
-        Matrix K=new Matrix(),A=new Matrix(),B=new Matrix(),Bt=new Matrix(),At=new Matrix();
+        Matrix μ = new Matrix();
+        calculateLocalμ(CreateC1(element,m),CreateC2(element,m),μ);
 
-        D = calculateLocalD(element,m);
-        Ve = calculateLocalVolume(element,m);
+        float J;
+   //EI es igual a 178
 
-        zeroes(A,3);
-        zeroes(B,3,4);
-        calculateLocalA(element,A,m);
-        calculateB(B);
-        transpose(A,At);
-        transpose(B,Bt);
+        J = calculateLocalJ(element,m);
+        Matrix k = new Matrix(30, 30, 0f);
+        for(int i = 0; i<30;i++){
+            for(int j = 0; i<30; j++){
+                k.get(i).set(j, (178f*J*μ.get(i).get(j)));
+                k.get(10+i).set(j+10, (178f*J*μ.get(i).get(j)));
+                k.get(20+i).set(j+20, (178f*J*μ.get(i).get(j)));
+            }
+        }
 
-        productRealMatrix(k*Ve/(D*D),productMatrixMatrix(Bt,productMatrixMatrix(At,productMatrixMatrix(A,B,3,3,4),3,3,4),4,3,4),K);
-
-        return K;
+        return k;
     }
 
     public static float calculateLocalJ(int i, Mesh m){
@@ -196,22 +388,46 @@ public class Sel {
 
     //Metodo que crea el elemento local b y lo almacena en m
     public static Vector createLocalb(int element,Mesh m){
-        Vector b = new Vector();
+    Matrix τ = new Matrix();
+        τ.get(0).set(0, 59f);
+        τ.get(1).set(0, -1f);
+        τ.get(2).set(0, -1f);
+        τ.get(3).set(0, -1f);
+        τ.get(4).set(0, 4f);
+        τ.get(5).set(0, 4f);
+        τ.get(6).set(0, 4f);
+        τ.get(7).set(0, 4f);
+        τ.get(8).set(0, 4f);
+        τ.get(9).set(0, 4f);
 
-        float Q = m.getParameter(Parameters.HEAT_SOURCE.ordinal()), J, b_i;
+        float J;
+
         J = calculateLocalJ(element,m);
+        Matrix ma = new Matrix(30, 1, 0f);
+        //f es corrdenada en x=-15  y=77  z=28
+        Vector f = new Vector();
 
-        b_i = Q * J / 24.0f;
-        b.add(b_i);
-        b.add(b_i);
-        b.add(b_i);
-        b.add(b_i);
+        f.add(0,-15f);
+        f.add(0,77f);
+        f.add(0,28f);
+
+
+        for (int i =0; i<30;i++){
+            ma.get(i).set(0, (J/120f*τ.get(i).get(0)));
+            ma.get(10+i).set(1, (J/120f*τ.get(i).get(0)));
+            ma.get(20+i).set(2, (J/120f*τ.get(i).get(0)));
+        }
+
+        Vector b = new Vector(30,0f);
+        productMatrixVector(ma,f,b);
+
 
         return b;
     }
 
     //Esta funcion crea los sitemas locales (K y b) y almacena los datos en sus respectivas listas
     public static void crearSistemasLocales(Mesh m, ArrayList<Matrix> localKs, ArrayList<Vector> localbs){
+
         for(int i = 0; i<m.getSize(Sizes.ELEMENTS.ordinal()); i++){
             localKs.add(createLocalK(i,m));
             localbs.add(createLocalb(i,m));
