@@ -90,25 +90,26 @@ public class Tools {
     }
 
     //Funcion que lee los datos de la malla de un documento y los almacena en un objeto de la clase Mesh
+
     public static void leerMallayCondiciones(Mesh m, String filename){
         String inputfilename, line;
         String[] values;
-        float k, Q;
+        float EI,fx,fy,fz;
         int nnodes, neltos, ndirich, nneu;
+
         inputfilename = addExtension(filename, ".dat");
 
         //Se crea la conexion con el archivo. Cuando se termine de ejecutar la sentencia try catch la conexin
         //se cierra. El try catch es requerido para poder usar los objetos FileReader y BufferedReader
-        System.out.println("antes del try");
-        System.out.println(inputfilename);
-        try(FileReader fr = new FileReader(inputfilename);
-            BufferedReader file = new BufferedReader(fr)) {
-            System.out.println(fr);
-            System.out.println("estoy en la primera linea de try");
+        try(FileReader fr = new FileReader(inputfilename); BufferedReader file = new BufferedReader(fr)) {
+
             line = file.readLine();
             values = line.split("\\s+");
-            k = Float.parseFloat(values[0].trim()); Q = Float.parseFloat(values[1].trim());
-            System.out.println("k "+k+"   Q "+Q);
+            EI = Float.parseFloat(values[0].trim());
+            fx= Float.parseFloat(values[1].trim());
+            fy = Float.parseFloat(values[2].trim());
+            fz = Float.parseFloat(values[3].trim());
+            System.out.println("EI "+EI+"   fx "+fx +"   fy "+fy+"   fz "+fz);
 
             line = file.readLine();
             values = line.split("\\s+");
@@ -118,7 +119,7 @@ public class Tools {
 
             System.out.println(nnodes+"\t"+neltos+"\t"+ndirich+"\t"+nneu);
 
-            m.setParameters(k,Q);
+            m.setParameters(EI,fx,fy,fz);
             m.setSizes(nnodes,neltos,ndirich,nneu);
             m.createData();
 
@@ -138,7 +139,6 @@ public class Tools {
             System.exit(1);
         }
     }
-
     public static Boolean findIndex(int v, int s, int[] arr){
         for (int i = 0; i < s; i++) {
             if(arr[i] == v) return true;

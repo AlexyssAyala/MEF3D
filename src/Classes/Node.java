@@ -1,13 +1,7 @@
 package Classes;
 
 public class Node extends Item{
-   // public Node(){};
 
-    //
-
-   // public Node(float z, int node4) {
-     //   super(z, node4);
-    //}
 
     //Metodo que nos ayudara a crear las listas de nodos
     public static Node[] createNodes(int n){
@@ -17,7 +11,7 @@ public class Node extends Item{
         }
         return list;
     }
-
+    //la cantidad de parametros que se le manda a set value
     @Override
     public void  setValues(int a,float b,float c,float d,int e,int f,int g, int h, float i) {
         id = a;

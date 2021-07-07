@@ -1,5 +1,5 @@
 package Enums;
 
 public enum Parameters {
-    THERMAL_CONDUCTIVITY, HEAT_SOURCE
+    EI, Fx,Fy,FZ;
 }

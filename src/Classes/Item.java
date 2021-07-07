@@ -1,7 +1,7 @@
 package Classes;
 
 public abstract class Item {
-
+//declaraciones
     protected int id;
     protected float x;
     protected float y;
@@ -19,7 +19,7 @@ public abstract class Item {
     protected float value;
 
 
-
+//SET Y GET
     public int getNode5() {
         return node5;
     }
@@ -108,10 +108,6 @@ public abstract class Item {
         this.node3 = node3;
     }
 
-    //public Item(float z, int node4) {
-      //  this.z = z;
-    //    this.node4 = node4;
-  //  }
 
     public void setValue(float value) {
 
@@ -158,7 +154,7 @@ public abstract class Item {
 
     //Metodo abstracto el cual permite asignar los valores dependiendo de la clase donde sera llamada.
       public abstract void setValues(int a,float b,float c,float d,int e,int f,int g, int h, float i);
-    // agregado un igualado a 0
+
 
 
 }

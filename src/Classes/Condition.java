@@ -1,14 +1,9 @@
 package Classes;
 
 public class Condition extends Item{
-    //public Condition() {
-  //  }
-// CONSTRUCTOR LLENO
-  //  public Condition(float z, int node4) {
-    //    super(z, node4);
-    //}
 
-    //condition requiere un constructor lleno no vacio
+
+
 
     //Metodo que nos ayudara a crear las listas de condiciones
     public static Condition[] createConditions(int n){
@@ -19,7 +14,7 @@ public class Condition extends Item{
         return list;
     }
 
-    //la cantidad de parametros que se le manda a set value son mas valores
+    //la cantidad de parametros que se le manda a set value
     @Override
     public void setValues(int a,float b,float c,float d,int e,int f,int g, int h, float i) {
         node1 = e;

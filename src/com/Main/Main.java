@@ -12,7 +12,7 @@ import static Tools.Tools.*;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("hola");
+        System.out.println("POLYGLOT SIDEQUEST");
         //Se guarda el nombre del archivo obtenido de los argumentos pasados al programa
        String filename = args[0];
         //Se instancian los vectores y matrices a utilizar
@@ -44,7 +44,7 @@ public class Main {
         zeroes(K, m.getSize(NODES.ordinal()));
         zeroes(b, m.getSize(NODES.ordinal()));
         ensamblaje(m, localKs, localbs, K, b);
-        // K.Show(); b.Show();
+
         System.out.println("*******************************");
 
         //Se aplica la condicion de Neumann
@@ -62,6 +62,5 @@ public class Main {
         //Se crea un archivo con los resultados.
         writeResults(m,T,filename);
 
-	// write your code here
     }
 }

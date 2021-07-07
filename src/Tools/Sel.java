@@ -17,7 +17,7 @@ public class Sel {
             System.out.println("**********************************");
         }
     }
-    //declaraciones de c1
+    //obtencion del valor C1
 
     public static float CreateC1 (int ind, Mesh m){
             Element el = m.getElement(ind);
@@ -31,6 +31,8 @@ public class Sel {
 
 
     }
+
+    //obtencion del C2
     public static float CreateC2 (int ind, Mesh m){
         Element el = new Element();
         el= m.getElement(ind);
@@ -43,7 +45,7 @@ public class Sel {
 
 
     }
-
+    //crenado matriz μ
     public static void calculateLocalμ(float c1, float c2, Matrix μ){
 
         float A,B,C,D,E,F,G,H,I,J,K;
@@ -74,7 +76,7 @@ public class Sel {
         J = (float) (- (2/15)*Math.pow(c2,2)) ;
 
         K =  -(4/3)*(c1*c2);
-
+        //seteando valores de μ
         μ.get(0).set(0, A);
         μ.get(0).set(1, E);
         μ.get(0).set(2, 0f);
@@ -189,7 +191,7 @@ public class Sel {
 
     }
 
-    //MATRIZ TAO
+    //Matriz tau
     private static void calculatelocalτ(Matrix τ){
 
         τ.get(0).set(0, 59f);
@@ -270,6 +272,7 @@ public class Sel {
     public static float  ab_ij(float ai, float aj, float al, float bi, float bj, float bl){
         return (ai-al)*(bj-bl)-(aj-al)*(bi-bl);
     }
+
     //Calcula la la matriz local A
     public static void calculateLocalA(int i,Matrix A, Mesh m){
         Element e = m.getElement(i);
@@ -316,7 +319,7 @@ public class Sel {
 
     }
 
-    public static float calculateLocalVolume(int ind, Mesh m){
+   /* public static float calculateLocalVolume(int ind, Mesh m){
         float V,a,b,c,d,e,f,g,h,i;
         Element el = m.getElement(ind);
         Node n1 = m.getNode(el.getNode1()-1);
@@ -338,7 +341,7 @@ public class Sel {
         //CASTEO A FLOAT
         V= (float) ((1.00/6.00)*(a*e*i+d*h*c+g*b*f-g*e*c-a*h*f-d*b*i));
         return  V;
-    }
+    }*/
 
     //Metodo que cera una matriz local K y lo alamcena en m
     private static Matrix createLocalK(int element,Mesh m){

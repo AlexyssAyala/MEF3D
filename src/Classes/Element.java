@@ -1,14 +1,6 @@
 package Classes;
 
 public class Element extends Item{
-   // public Element() {
-    //}
-    //contructor lleno
-
-    //public Element(float z, int node4) {
-     //   super(z, node4);
-    //}
-
 
     //Metodo que nos ayudara a crear las listas de elementos
     public static Element[] createElements(int n){
@@ -18,7 +10,7 @@ public class Element extends Item{
         }
         return list;
     }
-
+    //la cantidad de parametros que se le manda a set value
     @Override
     public void setValues(int a,float b,float c,float d,int e,int f,int g, int h, float i) {
         id = a;

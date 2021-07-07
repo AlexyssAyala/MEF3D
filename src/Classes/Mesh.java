@@ -19,9 +19,11 @@ public class Mesh {
     //Metodos
 
     //Funcion que almacena en la lista de parametros los  valres de k y Q
-    public void setParameters(float k, float Q){
-        parameters[Parameters.THERMAL_CONDUCTIVITY.ordinal()] = k;
-        parameters[Parameters.HEAT_SOURCE.ordinal()] = Q;
+    public void setParameters(float EI, float fx,float fy,float fz){
+        parameters[Parameters.EI.ordinal()] = EI;
+        parameters[Parameters.Fx.ordinal()] = fx;
+        parameters[Parameters.Fy.ordinal()] = fy;
+        parameters[Parameters.FZ.ordinal()] = fz;
     }
 
     //Se almacenan los datos correpondientes al numero de nodos, elementos de la malla y las condiciones de contorno
